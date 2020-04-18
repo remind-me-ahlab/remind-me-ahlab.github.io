@@ -5,20 +5,22 @@ var container = document.getElementById('dialogue-container');
 var keywords = [];
 var reply;
 var weather_trigger = 1;
+var audioPlayer = document.getElementById('audio-player');
 
 (function activate() {
     form = document.getElementById('chat-box');
-     submit = document.getElementById('chat-submit');
-     input = document.getElementById('chat-user');
-     container = document.getElementById('dialogue-container');
+    submit = document.getElementById('chat-submit');
+    input = document.getElementById('chat-user');
+    container = document.getElementById('dialogue-container');
     keywords = [];
     reply;
     weather_trigger = 1;
+    audioPlayer = document.getElementById('audio-player');
     form.addEventListener("submit", function(event) {
         weather_trigger++;
         event.preventDefault();
         create_bubble_user();
-      });
+    });
   })();
 
 
@@ -41,7 +43,8 @@ function create_bubble_user() {
     else {
     	check_keywords();
     	setTimeout(function() {
-      	create_bubble_bot(reply);
+          create_bubble_bot(reply);
+          audioPlayer.play();
     	}, 500);
     }
   }
@@ -49,7 +52,7 @@ function create_bubble_user() {
 
 function got_weather() {
 	count_childs();
-  create_bubble_bot(reply);
+    create_bubble_bot(reply);
 }
 
 function check_keywords() {
